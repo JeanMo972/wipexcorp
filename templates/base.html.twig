@@ -40,12 +40,12 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Basculer la navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos produits</font></font></a>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{ path('app_products') }}" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos produits</font></font></a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos produits</font></font></a>
+            <a class="dropdown-item" href="{{ path('app_products') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos produits</font></font></a>
             <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos services</font></font></a>
             <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quelque chose d'autre ici</font></font></a>
             <div class="dropdown-divider"></div>
@@ -155,3 +155,5 @@
 <script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
 </body>
 </html>
+
+ <h5>La pièce haute performance en martinique.</h5>
