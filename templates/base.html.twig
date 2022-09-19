@@ -74,9 +74,11 @@
 						<a href="{{ path('app_register') }}">Inscription</a>
 						{% endif %}
 					</div>
-					    <a href="#">
-						    <img src="#" alt="Mon panier" class="cart-icon">
+                    <div class="navbar-icon">
+					    <a href="{{ path('app_cart')}}">
+						    <img src="{{ asset('assets/img/caddie.png') }}" alt="Mon panier" class="cart-icon">
 					    </a>
+                    </div>
 				</div>
 			</nav>
 		</header>
@@ -147,7 +149,8 @@
     <footer class="footer-custom">
             <p> 2022 AUTOBOOST <br>
             <small>La pièce performance dans la caraïbe. <br>
-            <a href="#">Privacy</a>; <a href="#">Terms</a></small>
+            <a href="#">Privacy</a> &middot; <a href="#">Terms</a></small>
+        </p>
         </p>
     </footer>
 </main>

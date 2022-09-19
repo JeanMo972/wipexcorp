@@ -14,19 +14,20 @@ class OrderDetails
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'orderDetails')]
-    private ?Order $MyOrder = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Order $myOrder = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Product = null;
+    private ?string $product = null;
 
     #[ORM\Column]
-    private ?int $Quantity = null;
+    private ?int $quantity = null;
 
     #[ORM\Column]
-    private ?float $Price = null;
+    private ?float $price = null;
 
     #[ORM\Column]
-    private ?float $Total = null;
+    private ?float $total = null;
 
     public function getId(): ?int
     {
@@ -35,60 +36,60 @@ class OrderDetails
 
     public function getMyOrder(): ?Order
     {
-        return $this->MyOrder;
+        return $this->myOrder;
     }
 
-    public function setMyOrder(?Order $MyOrder): self
+    public function setMyOrder(?Order $myOrder): self
     {
-        $this->MyOrder = $MyOrder;
+        $this->myOrder = $myOrder;
 
         return $this;
     }
 
     public function getProduct(): ?string
     {
-        return $this->Product;
+        return $this->product;
     }
 
-    public function setProduct(string $Product): self
+    public function setProduct(string $product): self
     {
-        $this->Product = $Product;
+        $this->product = $product;
 
         return $this;
     }
 
     public function getQuantity(): ?int
     {
-        return $this->Quantity;
+        return $this->quantity;
     }
 
-    public function setQuantity(int $Quantity): self
+    public function setQuantity(int $quantity): self
     {
-        $this->Quantity = $Quantity;
+        $this->quantity = $quantity;
 
         return $this;
     }
 
     public function getPrice(): ?float
     {
-        return $this->Price;
+        return $this->price;
     }
 
-    public function setPrice(float $Price): self
+    public function setPrice(float $price): self
     {
-        $this->Price = $Price;
+        $this->price = $price;
 
         return $this;
     }
 
     public function getTotal(): ?float
     {
-        return $this->Total;
+        return $this->total;
     }
 
-    public function setTotal(float $Total): self
+    public function setTotal(float $total): self
     {
-        $this->Total = $Total;
+        $this->total = $total;
 
         return $this;
     }

@@ -2,12 +2,11 @@
 
 namespace App\Entity;
 
-use App\Entity\OrderDetails;
+use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\OrderRepository;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
@@ -20,65 +19,51 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $User = null;
+    private ?User $user = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createdAt = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $CarrierName = null;
+    private ?string $carrierName = null;
 
     #[ORM\Column]
-    private ?float $CarrierPrice = null;
+    private ?float $carrierPrice = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $Delivery = null;
+    private ?string $delivery = null;
 
-    #[ORM\OneToMany(mappedBy: 'MyOrder', targetEntity: OrderDetails::class)]
+    #[ORM\OneToMany(mappedBy: 'myOrder', targetEntity: OrderDetails::class)]
     private Collection $orderDetails;
-
-    #[ORM\Column]
-    private ?bool $isPaid = null;
 
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
     }
 
-    public function getTotal()
-    {
-        $total = null;
-
-        foreach ( $this->getOrderDetails()->getValues() as $product) {
-            $total = $total + ($product->getPrice() * $product->getQuantity());
-        }
-
-        return $total;
-    } 
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
-    public function setUser(?user $User): self
+    public function setUser(?User $user): self
     {
-        $this->User = $User;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -87,36 +72,36 @@ class Order
 
     public function getCarrierName(): ?string
     {
-        return $this->CarrierName;
+        return $this->carrierName;
     }
 
-    public function setCarrierName(string $CarrierName): self
+    public function setCarrierName(string $carrierName): self
     {
-        $this->CarrierName = $CarrierName;
+        $this->carrierName = $carrierName;
 
         return $this;
     }
 
     public function getCarrierPrice(): ?float
     {
-        return $this->CarrierPrice;
+        return $this->carrierPrice;
     }
 
-    public function setCarrierPrice(float $CarrierPrice): self
+    public function setCarrierPrice(float $carrierPrice): self
     {
-        $this->CarrierPrice = $CarrierPrice;
+        $this->carrierPrice = $carrierPrice;
 
         return $this;
     }
 
     public function getDelivery(): ?string
     {
-        return $this->Delivery;
+        return $this->delivery;
     }
 
-    public function setDelivery(string $Delivery): self
+    public function setDelivery(string $delivery): self
     {
-        $this->Delivery = $Delivery;
+        $this->delivery = $delivery;
 
         return $this;
     }
@@ -147,18 +132,6 @@ class Order
                 $orderDetail->setMyOrder(null);
             }
         }
-
-        return $this;
-    }
-
-    public function isIsPaid(): ?bool
-    {
-        return $this->isPaid;
-    }
-
-    public function setIsPaid(bool $isPaid): self
-    {
-        $this->isPaid = $isPaid;
 
         return $this;
     }

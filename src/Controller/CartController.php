@@ -35,7 +35,7 @@ class CartController extends AbstractController
         $cart->remove();
 
         //dd($cart);
-        return $this->redirectToRoute('products');   //redirige vers products
+        return $this->redirectToRoute('app_products');   //redirige vers products
     }
 
     //pour supprimer un produit
