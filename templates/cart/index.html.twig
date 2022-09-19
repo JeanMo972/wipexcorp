@@ -32,16 +32,16 @@ Retrouvez l'ensemble des produits que vous avez ajouté à votre panier
                     <img src=uploads/{{product.product.illustration}} style="height: 75px" > {#affiche la photo du produit dans le panier#}
             </td>
             <td >
-                    {{ product.product.name }} {#affiche le nom des produits dans le panier#}
+                    {{ product.product.name }} {#affiche le nom du produit dans le panier#}
             </td>
             <td>
-                    {{ product.quantity }} {#affiche la quantité de produit dans le panier#}
+                    {{ product.quantity }} {#affiche la quantité du produit dans le panier#}
             </td>
             <td>
-                    {{( product.product.price /100)|number_format(2, ',')}} €{#affiche le prix des produits dans le panier#}
+                    {{( product.product.price /100)|number_format(2, ',')}} €{#affiche le prix du produit dans le panier#}
             </td>
             <td>
-                    {{(product.product.price * product.quantity /100)|number_format(2, ',')}} €{#affiche le total des produits dans le panier#}
+                    {{(product.product.price * product.quantity /100)|number_format(2, ',')}} €{#affiche le total du produit dans le panier#}
             </td>
             <td>
                 <a href="{{path('decrease_to_cart', {'id':product.product.id})}}">

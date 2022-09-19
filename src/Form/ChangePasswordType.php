@@ -21,11 +21,14 @@ class ChangePasswordType extends AbstractType
             ->add('email',EmailType::class, [
                 'disabled' => true
             ])
+            
             ->add('firstname',TextType::class, [
                 'disabled'=> true
             ])
+
             ->add('lastname',TextType::class, [
                 'disabled'=> true])
+
             ->add('old_password',PasswordType::class,[
                 'label' => 'Mon mot de passe actuel',
                 'mapped'=>false,
@@ -33,6 +36,7 @@ class ChangePasswordType extends AbstractType
                     'placeholder' => 'Veuillez saissir votre mot de passe'
                 ]
             ])
+
             ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped'=>false,
@@ -52,6 +56,7 @@ class ChangePasswordType extends AbstractType
                     ]
                 ]
             ])
+            
             ->add('submit', SubmitType::class, [
                 'label' => "Mettre à jour"
                 ])                

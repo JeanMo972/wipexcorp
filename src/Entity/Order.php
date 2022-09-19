@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\OrderDetails;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
@@ -19,51 +20,68 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    private ?user $User = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $carrierName = null;
+    private ?string $CarrierName = null;
 
     #[ORM\Column]
-    private ?float $carrierPrice = null;
+    private ?float $CarrierPrice = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $delivery = null;
+    private ?string $Delivery = null;
 
-    #[ORM\OneToMany(mappedBy: 'myOrder', targetEntity: OrderDetails::class)]
+    #[ORM\OneToMany(mappedBy: 'MyOrder', targetEntity: OrderDetails::class)]
     private Collection $orderDetails;
+
+    #[ORM\Column]
+    private ?bool $isPaid = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $reference = null;
 
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
     }
 
+    public function getTotal()
+    {
+        $total = null;
+
+        foreach ( $this->getOrderDetails()->getValues() as $product) {
+            $total = $total + ($product->getPrice() * $product->getQuantity());
+        }
+
+        return $total;
+    } 
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?user
     {
-        return $this->user;
+        return $this->User;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?user $User): self
     {
-        $this->user = $user;
+        $this->User = $User;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -72,36 +90,36 @@ class Order
 
     public function getCarrierName(): ?string
     {
-        return $this->carrierName;
+        return $this->CarrierName;
     }
 
-    public function setCarrierName(string $carrierName): self
+    public function setCarrierName(string $CarrierName): self
     {
-        $this->carrierName = $carrierName;
+        $this->CarrierName = $CarrierName;
 
         return $this;
     }
 
     public function getCarrierPrice(): ?float
     {
-        return $this->carrierPrice;
+        return $this->CarrierPrice;
     }
 
-    public function setCarrierPrice(float $carrierPrice): self
+    public function setCarrierPrice(float $CarrierPrice): self
     {
-        $this->carrierPrice = $carrierPrice;
+        $this->CarrierPrice = $CarrierPrice;
 
         return $this;
     }
 
     public function getDelivery(): ?string
     {
-        return $this->delivery;
+        return $this->Delivery;
     }
 
-    public function setDelivery(string $delivery): self
+    public function setDelivery(string $Delivery): self
     {
-        $this->delivery = $delivery;
+        $this->Delivery = $Delivery;
 
         return $this;
     }
@@ -135,4 +153,29 @@ class Order
 
         return $this;
     }
+
+    public function isIsPaid(): ?bool
+    {
+        return $this->isPaid;
+    }
+
+    public function setIsPaid(bool $isPaid): self
+    {
+        $this->isPaid = $isPaid;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
 }
+

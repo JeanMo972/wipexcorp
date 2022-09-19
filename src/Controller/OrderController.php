@@ -104,13 +104,14 @@ class OrderController extends AbstractController
 
             //Fige la DATA(order)
             $this->entityManager->persist($order);
-            //
-            $products_for_stripe = [];
-
+            
             //enregistrer mes produits OrderDetails()pour chaque produit que j'ai dans mon panier
             foreach ($cart->getFull() as $product) {
-
+            //Enregistrer ma commande(**Order()**)
             $orderDetails = new OrderDetails();
+
+            $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
 
             $orderDetails->setMyOrder($order);
             $orderDetails->setProduct($product['product']->getName());
@@ -122,58 +123,20 @@ class OrderController extends AbstractController
             //Fige la DATA(orderDetails)
             $this->entityManager->persist($orderDetails);
             
-
-            $products_for_stripe[]= [ //permet d'afficher le recapitulatif de la commande avant payment
-                'price_data' => [
-                    'currency' => 'eur',
-                    'unit_amount' => $product['product']->getPrice(),
-                    'product_data' => [
-                        'name' => $product['product']->getName(),
-                        'images' => ["http://127.0.0.1:8000/public"],
-                    ],
-                 ],
-                'quantity' => ($product['quantity'])
-
-            ];
-
             //dd($product);
             }
 
             //enregistre la commande en base de commande dans orderDetails
-            //$this->entityManager->flush();
-            
+            $this->entityManager->flush();
 
-            //intégration de STRIPE
+            //dd($order);         
 
-            
-            // This is your test secret API key.
-            Stripe::setApiKey('sk_test_51LieLtLv8IqE4Bc33y5pBGo6yAejtL8r2dWK2dYNIWdtsoberogQoaAVJUR87Eo2P8qWvpjQbkLGvpHqoWmv8CQC002PvXPEkR');
-
-            //route 
-            $YOUR_DOMAIN = 'http://127.0.0.1:8000/public';
-            // connexion session STRYPE
-            $checkout_session = Session::create([
-                'payment_method_types' => ['card'],
-                'line_items' => [
-
-                $products_for_stripe 
-
-                ],
-                'mode' => 'payment',
-                'success_url' => $YOUR_DOMAIN . '/success.html',
-                'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
-              ]);
-
-                //dump($checkout_session->id);
-                //dd($products_for_stripe);
-                //(dd($checkout_session));
-            
             return $this->render('order/add.html.twig',[
                 'cart' =>$cart->getFull(),//affiche le panier complet
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
-                'stripe_checkout_session' =>$checkout_session->id,
-        
+                'reference' => $order->getReference(),
+               
                 ]);
 
             }
