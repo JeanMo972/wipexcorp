@@ -53,3 +53,15 @@ body {
   padding-top: 25px;
 
 }
+
+.account-item {
+  background-color: #b1c3e4;
+  padding: 70px;
+}
+
+.account-item a {
+  text-transform: uppercase;
+  font: size 13px;
+  color: #009cfc;
+  font-weight: bold;
+}
