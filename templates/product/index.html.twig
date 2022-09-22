@@ -12,7 +12,7 @@
             <h3>Nos produits</h3>
                 <div class="row product-container">
 {% for product in products %}
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="product-item text-center">
             <a href="{{ path('app_product', {'slug' : product.slug}) }}"> {#route vers la page produit #}
                 <img src="/uploads/{{product.illustration}}" alt="{{product.name}}"class="img-fluid"></a> {# lien vers le dossier image #}

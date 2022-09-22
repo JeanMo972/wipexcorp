@@ -8,10 +8,11 @@ body {
 
 .footer-custom {
   text-align: center;
-  position: fixed;
+  position: absolute;
   width: 100%;
   background-color: #dfeaff;
   padding-top: 25px;
+  margin-top: 50px;
 }
 
 .product-item h5{
@@ -43,25 +44,28 @@ body {
   font-size: 19px;
 }
 
-.footer-custom {
-
-  text-align: center;
-  position:fixed;
-  bottom: 0px;
-  width: 100%;
-  background-color: #009cfc;
-  padding-top: 25px;
-
+.cart-icon {
+  height: 20px;
+  padding-left: 20px;
 }
 
-.account-item {
-  background-color: #b1c3e4;
-  padding: 70px;
+.block-small {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.account-item a {
-  text-transform: uppercase;
-  font: size 13px;
-  color: #009cfc;
+.form-check {
+  background-color: #f4f8ff;
+  padding : 20px 65px;
+  margin-top : 7px;
+}
+
+.col-form-label {
   font-weight: bold;
+}
+
+.order-summary {
+  background-color: #f4f8ff;
+  padding: 20px;
+  margin-top: 22px;
 }

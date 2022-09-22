@@ -11,6 +11,9 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/autoboost.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/_variables.scss')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/_bootswatch.scss')}}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -32,24 +35,24 @@
     <link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
 </head>
 <body>
-      <h5>La pièce haute performance en martinique.</h5>
+      <h6>La pièce haute performance en martinique.</h6>
 		<header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ path('home') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AUTOBOOST</font></font></a>
+    <a class="navbar-brand" href="{{ path('home') }}#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AUTOBOOST</font></font></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Basculer la navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{ path('app_products') }}" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos produits</font></font></a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ path('app_products') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos produits</font></font></a>
-            <a class="dropdown-item" href="{{ path('app_services') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos services</font></font></a>
-            <a class="dropdown-item" href="{{ path('app_something') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quelque chose d'autre ici</font></font></a>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Magasin</a>
+          <div class="dropdown-menu show" data-bs-popper="static">
+            <a class="dropdown-item" href="{{ path('app_products') }}">Nos produits</a>
+            <a class="dropdown-item" href="#">Nos pneus</a>
+            <a class="dropdown-item" href="{{ path('app_services') }}">Nos prestations</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos pneus</font></font></a>
+            <a class="dropdown-item" href="{{ path('app_something') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos engagements</font></font></a>
           </div>
         </li>
         <li class="nav-item">
@@ -74,87 +77,75 @@
 						<a href="{{ path('app_register') }}">Inscription</a>
 						{% endif %}
 					</div>
-                    <div class="navbar-icon">
-					    <a href="{{ path('app_cart')}}">
-						    <img src="{{ asset('assets/img/shopping-cart.png') }}" alt="Mon panier" class="cart-icon">
-					    </a>
-                    </div>
+          <div class="navbar-icon">
+					  <a href="{{ path('app_cart')}}">
+						<img src="{{ asset('assets/img/shopping-cart.png') }}" alt="Mon panier" class="cart-icon">
+					  </a>
+          </div>
 				</div>
 			</nav>
 		</header>
 
 <main role="main">
 
-    {% if block('carousel') is defined %}
+{% if block('carousel') is defined %}
+<div class="container mt-5">
+  <div class="carousel-container position-relative row">
+  
+<!-- Sorry! Lightbox doesn't work - yet. -->
+  
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{asset('assets/img/souscrire.jpeg')}}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></img>
-                <div class="container">
-                    <div class="carousel-caption text-left">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="{{ path('app_register') }}" role="button">Enregistrez-Vous</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{asset('assets/img/.jpeg')}}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Nos Enseignes</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{asset('assets/img/.jpeg')}}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/>
-                <div class="container">
-                    <div class="carousel-caption text-right">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Gallerie Photo</a></p>
-                    </div>
-                </div>
-            </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-slide-number="0">
+          <img src="{{ asset('assets/img/audi_a3_revo.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/Pn6iimgM-wo/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
         </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Précédent</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Prochain</span>
-        </a>
+        <div class="carousel-item" data-slide-number="1">
+          <img src="{{ asset('assets/img/engine.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/tXqVe7oO-go/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+        </div>
+        <div class="carousel-item" data-slide-number="2">
+          <img src="{{ asset('assets/img/remap.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/qlYQb7B9vog/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+        </div>
+        <div class="carousel-item" data-slide-number="3">
+          <img src="{{ asset('assets/img/reprogrammation-moteur.webp') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/QfEfkWk1Uhk/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+        </div>
+        <div class="carousel-item" data-slide-number="4">
+          <img src="{{ asset('assets/img/romac.png') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/CSIcgaLiFO0/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+        </div>
+        <div class="carousel-item" data-slide-number="5">
+          <img src="{{ asset('assets/img/motors-built.png') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/a_xa7RUKzdc/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+        </div>
+      </div>
     </div>
-    {% endif %}
+  </div>
+</div> <!-- /container -->
+{% endif %}
 
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
-       {% block content %}
-       {% endblock %}
-    </div><!-- /.container -->
+<div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
+<hr>
+{% block content %}
+{% endblock %}
+
+</div><!-- /.container -->
+<br>
+
+<div class="container-fluid"></div>
 
     <!-- FOOTER -->
     <footer class="footer-custom">
-            <p> 2022 AUTOBOOST <br>
+            <p>@ 2022 AUTOBOOST <br>
             <small>La pièce performance dans la caraïbe. <br>
             <a href="#">Privacy</a> &middot; <a href="#">Terms</a></small>
         </p>
         </p>
     </footer>
+</div>
 </main>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{{asset('assets/js/script.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
 </body>
 </html>
