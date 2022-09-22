@@ -1,21 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="La pièce performance en caraïbe">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>{% block title %}AUTOBOOST - La pièce performance{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="La pièce performance en caraïbe">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v4.1.1">
+        <title>{% block title %}AUTOBOOST - La pièce performance{% endblock %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{asset('assets/css/autoboost.css')}}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{asset('assets/css/_variables.scss')}}" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{asset('assets/css/_bootswatch.scss')}}" rel="stylesheet">``
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/autoboost.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/_variables.scss')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/_bootswatch.scss')}}" rel="stylesheet">
-
-    <style>
+        <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -30,41 +39,30 @@
                 font-size: 3.5rem;
             }
         }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
-</head>
-<body>
-      <h6>La pièce haute performance en martinique.</h6>
-		<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{ path('home') }}#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AUTOBOOST</font></font></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Basculer la navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Magasin</a>
-          <div class="dropdown-menu show" data-bs-popper="static">
-            <a class="dropdown-item" href="{{ path('app_products') }}">Nos produits</a>
-            <a class="dropdown-item" href="#">Nos pneus</a>
-            <a class="dropdown-item" href="{{ path('app_services') }}">Nos prestations</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ path('app_something') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos engagements</font></font></a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_who_we_are') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qui nous sommes</font></font></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_contact') }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contacter-nous</font></font></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-    <div class="navbar-item-custom">
+        </style>
+    </head>
+    <body>
+        <h6>La pièce haute performance en martinique.</h6>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="{{ path('home') }}">AutoBoost</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_who_we_are') }}">Qui nous sommes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_contact') }}">Contacter-Nous</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ path('app_products') }}">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{{ path('app_services') }}">Nos prestations</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_something') }}">Nos engagements</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="navbar-item-custom">
 						{% if app.user %}
 						<a href="{{ path('account') }}">Mon compte
 							<small>({{ app.user.firstname }})</small>
@@ -77,76 +75,74 @@
 						<a href="{{ path('app_register') }}">Inscription</a>
 						{% endif %}
 					</div>
-          <div class="navbar-icon">
-					  <a href="{{ path('app_cart')}}">
-						<img src="{{ asset('assets/img/shopping-cart.png') }}" alt="Mon panier" class="cart-icon">
-					  </a>
-          </div>
-				</div>
-			</nav>
-		</header>
-
-<main role="main">
-
-{% if block('carousel') is defined %}
-<div class="container mt-5">
-  <div class="carousel-container position-relative row">
+                    <div class="mt-3"></div>
+                    <div class="navbar-icon">
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            <a href="{{ path('app_cart')}}">Cart</a>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+    <header class="bg-dark py-5">
+        {% if block('carousel') is defined %}
+        <div class="container mt-12">
+            <div class="carousel-container position-relative row">
   
-<!-- Sorry! Lightbox doesn't work - yet. -->
+        <!-- Sorry! Lightbox doesn't work - yet. -->
   
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-slide-number="0">
-          <img src="{{ asset('assets/img/audi_a3_revo.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/Pn6iimgM-wo/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                     <div class="carousel-inner">
+                        <div class="carousel-item active" data-slide-number="0">
+                        <img src="{{ asset('assets/img/audi_a3_revo.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/Pn6iimgM-wo/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                        </div>
+                    <div class="carousel-item" data-slide-number="1">
+                    <img src="{{ asset('assets/img/engine.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/tXqVe7oO-go/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    </div>
+                    <div class="carousel-item" data-slide-number="2">
+                    <img src="{{ asset('assets/img/remap.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/qlYQb7B9vog/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    </div>
+                    <div class="carousel-item" data-slide-number="3">
+                    <img src="{{ asset('assets/img/reprogrammation-moteur.webp') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/QfEfkWk1Uhk/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    </div>
+                    <div class="carousel-item" data-slide-number="4">
+                    <img src="{{ asset('assets/img/romac.png') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/CSIcgaLiFO0/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    </div>
+                    <div class="carousel-item" data-slide-number="5">
+                     <img src="{{ asset('assets/img/motors-built.png') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/a_xa7RUKzdc/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="carousel-item" data-slide-number="1">
-          <img src="{{ asset('assets/img/engine.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/tXqVe7oO-go/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+        </div> <!-- /container -->
+        {% endif %}    
         </div>
-        <div class="carousel-item" data-slide-number="2">
-          <img src="{{ asset('assets/img/remap.jpeg') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/qlYQb7B9vog/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-        </div>
-        <div class="carousel-item" data-slide-number="3">
-          <img src="{{ asset('assets/img/reprogrammation-moteur.webp') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/QfEfkWk1Uhk/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-        </div>
-        <div class="carousel-item" data-slide-number="4">
-          <img src="{{ asset('assets/img/romac.png') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/CSIcgaLiFO0/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-        </div>
-        <div class="carousel-item" data-slide-number="5">
-          <img src="{{ asset('assets/img/motors-built.png') }}" class="d-block w-100" alt="..." data-remote="https://source.unsplash.com/a_xa7RUKzdc/" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-        </div>
-      </div>
-    </div>
-  </div>
-</div> <!-- /container -->
-{% endif %}
+    </header>
+            
+    <div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
+    <hr>
+    {% block content %}
+    {% endblock %}
 
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-<div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
-<hr>
-{% block content %}
-{% endblock %}
-
-</div><!-- /.container -->
-<br>
-
-<div class="container-fluid"></div>
+    </div><!-- /.container -->
+    <div class="container-fluid"></div>
 
     <!-- FOOTER -->
     <footer class="footer-custom">
-            <p>@ 2022 AUTOBOOST <br>
+            <p>Copyright &copy; AUTOBOOST 2022<br>
             <small>La pièce performance dans la caraïbe. <br>
             <a href="#">Privacy</a> &middot; <a href="#">Terms</a></small>
-        </p>
-        </p>
+            </p>
     </footer>
-</div>
+    </div>
 </main>
 <script src="{{asset('assets/js/script.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
-</body>
+<script src="{{asset('assets/js/scripts.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <!-- Product actions-->
+                                                                                                                                    </body>
 </html>
 
