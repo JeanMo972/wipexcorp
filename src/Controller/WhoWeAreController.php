@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WhoWeAreController extends AbstractController
 {
-    #[Route('/who/we/are', name: 'app_who_we_are')]
+    #[Route('/qui-nous-sommes', name: 'app_who_we_are')]
     public function index(): Response
     {
         return $this->render('who_we_are/index.html.twig');
