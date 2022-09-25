@@ -1,60 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Nos produits - AUTOBOOST{% endblock %}
-{% block body %}
- <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-                </div>
-{% endblock %}
-{% block content %}             
-    {# Création d'une section filtre dans la page produit #}
-    <div class="row">
-        <div class="col-md-3">
-            <h3>Filtrers</h3>
-            {{form(form)}}
-        </div>
+{% block content %}
+<img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-1.jpg" alt="" class="d-block w-100">      
+<br>
+<br>
+<br>
+{# Création d'une section filtre dans la page produit #}
+<div class="row">
+    <div class="col-md-3">
+        <h3>Filtres</h3>
+        {{form(form)}}
+    </div>
         <div class="col-md-9">
             <h3>Nos produits</h3>
+            <br>
+            <br>
                 <div class="row product-container">
-        
-{% for product in products %}
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <a href="{{ path('app_product', {'slug' : product.slug}) }}"> {#route vers la page produit #}
-                        <img src="/uploads/{{product.illustration}}" alt="{{product.name}}"class="img-fluid"></a> {# lien vers le dossier image #}     
-                        <!-- Product details-->
-                        <span class="product-subtitle">{{product.subtitle}}</span>
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">{{product.name}}</h5>
-                                <!-- Product price-->
-                                <span class="product-price">{{ (product.price / 100)|number_format(2, ',')}} €</span>
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{path('add_to_cart', {'id':product.id})}}">Ajouter au panier</a></div> {# lien vers ajouter au panier #}
-                        </div>
-                        <a href="#">Retourner aux produits</a>
-                    
-                                </div>
-                            </div>
-                        </div>
-                </section>
-                {% endfor %}
-                </div>
-                </div>
+    {% for product in products %}
+    <div class="col-md-3 mt-4">
+         <div class="card h-100">
+            <!-- Sale badge-->
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Vendu</div>
+        <div class="product-item text-center">
+            <a href="{{ path('app_product', {'slug' : product.slug}) }}"> {#route vers la page produit #}
+                <img src="/uploads/{{product.illustration}}" alt="{{product.name}}"class="img-fluid"></a> {# lien vers le dossier image #}
+                <br>
+                <br>
+                <h5>{{product.name}}</h5>
+                <span class="product-subtitle">{{product.subtitle}}</span>
+                <br>
+                <span class="product-price">{{ (product.price / 100)|number_format(2, ',')}} €</span>
+                <br>
+                <br>
+                <a class="btn btn-outline-dark mt-auto" href="{{path('add_to_cart', {'id':product.id})}}">Ajouter au panier</a> {# lien vers ajouter au panier #}
+                <br>
+                <br>
+                <br>
+                <br>
+
         </div>
+    </div>
+    </div>
+{% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
 
      
-
-    
-

@@ -3,19 +3,15 @@
 {% block title %}Valider ma commande - AUTOBOOST{% endblock %}
 
 {% block content %}
- <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-                </div>
-            </div>
-        </header>
+ <!-- Header--> 
+    <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-1.jpg" alt="" class="d-block w-100"> 
+    <br>                                          
+    <br>                                          
+    <br>                                          
     <h2>Je passe ma commande</h2>
     
     <p>Choissisez vos préferences avant de passer votre commande AUTOBOOST</p>
-<div class="row">
+    <div class="row">
     <div class="col-md-6">
 
     {% block body %}
@@ -51,8 +47,9 @@
                             {{product.quantity}}
                         </div>
                     </div>
+                    
     {% endfor %}
-
-    </div>
     </div> 
-{% endblock %}
+    <a href="{{ path('app_products') }}">Retourner aux produits</a>
+    </div> 
+    {% endblock %}

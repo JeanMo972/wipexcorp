@@ -3,16 +3,10 @@
 {% block title %}{{product.name}} - AUTOBOOST{% endblock %}
 
 {% block content %}
- <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-                </div>
-            </div>
-        </header>
-  <div class="row">
+    <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-3.jpg" alt="" class="d-block w-100"> 
+    <br>                        
+    <br>                        
+    <br>                        
     <div class="col-md-5">
       <img src="/uploads/{{product.illustration}}" alt="{{product.name}}" class="img-fluid">
     </div>
@@ -26,10 +20,12 @@
       </p>
       <hr>
       <a href="{{path('add_to_cart', {'id':product.id})}}" class="btn btn-primary">Ajouter au panier</a></div>{#ajout de la route pour suppression du panier #}
-  </div>
-  <a href="{{ path('/produit/{slug}') }}">Retourner aux produits</a>
-  
-{% endblock %}
+    <br>
+    <br>
+    <br>
+    <a href="{{ path('app_products') }}">Retourner aux produits</a>
+    </div>
+  {% endblock %}
 
     
 

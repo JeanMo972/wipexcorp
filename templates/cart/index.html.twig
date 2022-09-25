@@ -4,14 +4,10 @@
 
 {% block content %}
  <!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-        </div>
-    </div>
-</header>
+<img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-1.jpg" alt="" class="d-block w-100">     
+<br> 
+<br> 
+<br> 
 <h1>Mon panier</h1>
 Retrouvez l'ensemble des produits que vous avez ajouté à votre panier
 
@@ -20,7 +16,7 @@ Retrouvez l'ensemble des produits que vous avez ajouté à votre panier
 <table class="table mt-3">
     <thead>
         <tr>
-            <th scope="col">llustration</th>
+            <th scope="col">Produit</th>
             <th scope="col"></th>
             <th scope="col">Quantité</th>
             <th scope="col">Prix</th>
@@ -81,16 +77,18 @@ Retrouvez l'ensemble des produits que vous avez ajouté à votre panier
 <div class="text-right mb-5">
     <b>Nombre de produit : </b>{{ cart|length }}<br>
     <b>Total de mon panier : {{(total / 100)|number_format(2, ',')}} €</b>
+    <br>
+    <br>
     <a href="{{ path('app_order') }}" class="btn btn-success btn-block mt-3">Valider mon panier</a>
     <br>
     <br>
-    <a href="{{ '#' }}">Retourner au produit</a>
+    <a href="{{ path('app_products') }}">Retourner aux produits</a>
 
     </div>
 {% else %}
     <hr>
     <p><b>Votre panier est vide</b></p>
     <br>
-    <a href="{{ '#' }}">Retourner au produit</a>
+    <a href="{{ path('app_products') }}">Retourner aux produits</a>
 {% endif %}
 {% endblock %}
