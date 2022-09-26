@@ -3,12 +3,10 @@
 namespace App\Controller;
 
 use DateTime;
-use Stripe\Stripe;
 use App\Classe\Cart;
 use App\Entity\Order;
 use App\Form\OrderType;
 use App\Entity\OrderDetails;
-use Stripe\Checkout\Session;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +37,7 @@ class OrderController extends AbstractController
         $form = $this->createForm(OrderType::class, null, [
             'user' => $this->getUser()
         ]);
-
+        //Renvoi vers 
         return $this->render('order/index.html.twig',[
             'form' =>$form->createView(),
             'cart' =>$cart->getFull()
@@ -70,42 +68,45 @@ class OrderController extends AbstractController
         // SI le formulaire est soumis ET le formulaire est valide ALORS
         if ($form->isSubmitted() && $form->isValid()) {
 
-        //{dd($form->getData()); 
-
+            //{dd($form->getData()); 
+            //Enregistrer ma commande
             $order = new Order();
             $date = new DateTime;
             $carriers = $form->get('carriers')->getData();//soumet les data carriers
 
-        //dd($carriers);
+            //dd($carriers);
 
-            //enregistrer  
+            //Vérifie si l'adresse de livraison est renseigner
             $delivery = $form->get('addresses')->getData();
             $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
             $delivery_content .= '<br>'.$delivery->getPhone();
-
+            //Condition Si la société n'est pas remplie alors tu continu 
             if ($delivery->getCompagny()) {
                 $delivery_content .= '<br>'.$delivery->getCompany();
             }
-
+            //Enregistrer l'adresse de livraison Order()
             $delivery_content .= '<br>'.$delivery->getAddress();
             $delivery_content .= '<br>'.$delivery->getPostal().' '.$delivery->getCity();
             $delivery_content .= '<br>'.$delivery->getContry();
 
-        //dd($delivery_content);
+            //dd($delivery_content);
 
-        //dd($delivery);
-            //enregistrer ma commande Order()
-            $order->setUser($this->getUser());//enregistre la commande de l'utilisateur en base de donnée
+            //dd($delivery);
+
+            //Enregistrer ma commande Order()
+            $reference = $date->format('dmY').'_'.uniqid();
+            $order->setReference($reference);
+            $order->setUser($this->getUser());//Enregistre la commande de l'utilisateur en base de donnée
             $order->setCreatedAt($date);//Date de l'enregistrement la commande de l'utilisateur
-            $order->setCarrierName($carriers->getName());//enregistre le nom du transporteur en base de donnée
-            $order->setCarrierPrice($carriers->getPrice());//enregistre le prix de la livaison en base de donnée;
-            $order->setDelivery($delivery_content);//enregistre l'adresse de livraison en base de donnée
-            $order->setIsPaid(0);//enregistre le paimant en basse de donnée
+            $order->setCarrierName($carriers->getName());//Enregistre le nom du transporteur en base de donnée
+            $order->setCarrierPrice($carriers->getPrice());//Enregistre le prix de la livaison en base de donnée;
+            $order->setDelivery($delivery_content);//Enregistre l'adresse de livraison en base de donnée
+            $order->setIsPaid(0);//Enregistre le paimant en basse de donnée
 
             //Fige la DATA(order)
             $this->entityManager->persist($order);
             
-            //enregistrer mes produits OrderDetails()pour chaque produit que j'ai dans mon panier
+            //Enregistrer mes produits OrderDetails()pour chaque produit que j'ai dans mon panier
             foreach ($cart->getFull() as $product) {
             //Enregistrer ma commande(**Order()**)
             $orderDetails = new OrderDetails();
@@ -126,13 +127,14 @@ class OrderController extends AbstractController
             //dd($product);
             }
 
-            //enregistre la commande en base de commande dans orderDetails
+            //Enregistre la commande en base de commande dans orderDetails
             $this->entityManager->flush();
-
+                                                                                                                       
             //dd($order);         
-
+            
             return $this->render('order/add.html.twig',[
-                'cart' =>$cart->getFull(),//affiche le panier complet
+                //Affiche le panier complet
+                'cart' =>$cart->getFull(),
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
                 'reference' => $order->getReference(),

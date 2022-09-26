@@ -5,6 +5,7 @@ namespace App\Controller;
 use Stripe\Stripe;
 use App\Classe\Cart;
 use App\Entity\Order;
+use App\Entity\Product;
 use Stripe\Checkout\Session;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class StripeController extends AbstractController
         $products_for_stripe = [];
 
         //route 
-        $YOUR_DOMAIN = 'http://127.0.0.1:8000/public';
+        $YOUR_DOMAIN = 'http://127.0.0.1:8000';
 
         $order = $entityManagerInterface->getRepository(Order::class)->findOneByReference($reference);
 
@@ -34,8 +35,9 @@ class StripeController extends AbstractController
 
         foreach ($cart->getFull() as $product) {
             //intégration de STRIPE
-            $products_for_stripe[]= [ //permet d'afficher le recapitulatif de la commande avant payment
-                'price_data' => [
+            //permet d'afficher le recapitulatif de la commande avant payment 
+            $products_for_stripe[]= [ 
+                    'price_data' => [
                     'currency' => 'eur',
                     'unit_amount' => $product['product']->getPrice(),
                     'product_data' => [
@@ -48,43 +50,45 @@ class StripeController extends AbstractController
             ];
 
         }
-        
-        //dd($order->getOrderDetails()->getValues());
-
-        //transporteur
-        $carrier_for_stripe[]= [ //permet d'afficher le transporteur avant payment
-            'price_data' => [
-                'currency' => 'eur',
-                'unit_amount' => $order->getCarrierPrice(),
-                'product_data' => [
-                    'name' => $order->getCarrierName(),
-                    'images' => ["http://127.0.0.1:8000/public/uploads"],
+        //ajout du réglement transporteur dans la session de paymant stripe
+        $products_for_stripe[] = [
+            'price_data'=>[
+                //monnaie
+                'currency'=>'eur',
+                //prix tranqsporteur
+                'unit_amount'=>$order->getCarrierPrice()*100,
+                //produit en base de donnée
+                'product_data'=>[
+                    'name'=>$order->getCarrierName(),
+                    'images'=>["https://dirigeants-entreprise.com/content/uploads/Apps-Colissimo.jpg"],
                 ],
-             ],
-            'quantity' => 1
-
+            ],
+            //quantité de transporteur
+            'quantity'=>1,
+            //dd($order->getOrderDetails()->getValues());
         ];
-           
-             // This is your test secret API key.
-            Stripe::setApiKey('pk_test_51Ljoc2HXWDnJcARng0yqIugniD7oS54odF7flw3bAVZWKxUuAg0P2fsGW9F9LeuMA8BRgSCzHHY1HoE8sS29EVBd00ZJSLnieK');
+            //dd($products_for_stripe);
+            // This is your test secret API key.
+            Stripe::setApiKey('sk_test_51Ljoc2HXWDnJcARnUDTGShW2AetAwOCzbD7LBJ9H1r3419onwkzWHdxLY7psXofhxFswJhj6zFnN0hNP8NW0DZhz00BRdvHFsT');
             //dd($order);
             $checkout_session = Session::create([
-            'customer_email' =>$this->getUser()->getEmail(),
-            'payment_method_types' => ['card'],
-            'line_items' => [
+                'customer_email' => $this->getUser()->getEmail(),
+                'payment_method_types' => ['card'],
+                'line_items' => [
 
-            $products_for_stripe 
+                    $products_for_stripe
+                ],
+                'mode' => 'payment',
+                'success_url' => $YOUR_DOMAIN . '/commande/merci/{CHECKOUT_SESSION_ID}',
+                'cancel_url' => $YOUR_DOMAIN . '/commande/erreur/{CHECKOUT_SESSION_ID}',
+              ]);
+    
+            $order->setStripeSessionId($checkout_session->id);
+            
+            $entityManagerInterface->flush();
+            
 
-            ],
-            'mode' => 'payment',
-            'success_url' => $YOUR_DOMAIN . '/success.html',
-            'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
-          ]);
-
-          //$response = new JsonResponse(['id' => $checkout_session->id]);
-          return $this->redirect($checkout_session->url);
-        
-       
+            return $this->redirect($checkout_session->url);  
     }
 
-} 
+}
