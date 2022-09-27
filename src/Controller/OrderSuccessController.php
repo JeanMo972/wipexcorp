@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
+use App\Classe\Mail;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,8 +26,6 @@ class OrderSuccessController extends AbstractController
     {
         $order = $this ->entityManager->getRepository(Order::class)->findOneByStripeSessionId($stripeSessionId);
 
-        //dd($order);
-
         //si la commande n'existe pas OU que l'utilisateur ne correspond pas à celui actuellement connecté ALORS 
         if (!$order || $order->getUser() != $this->getUser()) {
             return $this->redirectToRoute('home');
@@ -44,6 +43,10 @@ class OrderSuccessController extends AbstractController
 
             //éxecute
             $this->entityManager->flush();
+            
+            
+
+
         }
 
         return $this->render('order_success/index.html.twig', [
