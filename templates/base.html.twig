@@ -10,19 +10,21 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="#" rel="stylesheet" />
+        <!-- FontAwesome icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{asset('assets/css/autoboost.css')}}" rel="stylesheet">
+        <link href="#" rel="stylesheet">
         <!-- Custom styles for this template -->
-        <link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="#" rel="stylesheet">
+        <!-- Script Js -->
+        <script src="#"></script>
+        <!-- Bootstrap Bundule Js -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <!-- Product actions-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+        
         <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -40,9 +42,39 @@
         }
         </style>
     </head>
-    <body>
-        <h6>La pièce haute performance en martinique.</h6>
-        <!-- Navigation-->
+    <main role="main">
+    <!-- NavBar Start-->
+    <header>
+         <h6>La pièce haute performance en martinique.</h6>
+        <!-- Topbar Start -->
+        <div class="container-fluid bg-light p-0">
+            <div class="row gx-0 d-none d-lg-flex">
+                <div class="col-lg-7 px-5 text-start">
+                    <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                        <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                        <small>ZA Bois Carré 97232 Le Lamentin Martinique</small>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center py-3">
+                        <small class="far fa-clock text-primary me-2"></small>
+                        <small>Lun - Sam : 09.00 - 19.00</small>
+                    </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>05 96 79 61 97</small>
+                </div>
+                    <div class="h-100 d-inline-flex align-items-center">
+                        <a class="btn btn-sm-square bg-black text-primary me-1" href="https://fr-fr.facebook.com/pages/category/Automotive-Customization-Shop/AUTOBOOST-256129727770285/"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-sm-square bg-black text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-sm-square bg-black text-primary me-0" href="https://www.instagram.com/autoboost_fwi/?hl=fr"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+        <!-- NavBar Start-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{{ path('home') }}">AutoBoost</a>
@@ -51,14 +83,12 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link" href="{{ path('app_who_we_are') }}">Qui nous sommes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ path('app_contact') }}">Contacter-Nous</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('app_products') }}">Shop</a></li>
-                      
-                           {# <li class="nav-link dropdown-toggle" id="navbarDropdown" href="{{ path('app_products') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</li>
+                           <li class="nav-link dropdown-toggle" id="navbarDropdown" href="{{ path('app_products') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</li>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ path('app_products') }}">All Products</a>
-                                <hr class="dropdown-divider" />
+                                <hr class="dropdown-divider"/>
                                 <a class="dropdown-item" href="{{ path('app_services') }}">Nos prestations</a>
-                                <a class="dropdown-item" href="{{ path('app_something') }}">Nos engagements</a>#}
+                                <a class="dropdown-item" href="{{ path('app_something') }}">Nos engagements</a>
                             </ul>
                         </li>
                     </ul>
@@ -76,7 +106,7 @@
 					    {% endif %}
 				    </div>
                     
-                <div class="mt-4"></div>
+                <div class="mt-5"></div>
                     <div class="navbar-icon">
                         <form class="d-flex">
                             <button class="btn btn-outline-dark" type="submit">
@@ -88,56 +118,73 @@
                     </div>
                 </div>
         </nav>
-        <!-- Header-->
-        <header>
-        {% if block('carousel') is defined %}
-             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active">
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>                                                       
-                <div class="carousel-inner">
-                    {% for header in headers %}
-                        <div class="carousel-item active" style="background: url('/uploads/{{ header.illustration}}');">
-                            <div class="container">
-                                <div class="carousel-caption text-left">
-                                    <h1>{{ header.title }}</h1>
-                                    <p>{{ header.content }}</p>
-                                    <p><a class="btn btn-lg btn-primary" href="{{ header.btnUrl }}" role="button">{{ header.btnTitle}}</a></p>
-                                </div>
-                            </div>
-                        </div>      
-                    {% endfor %}                                    
-                        </div>
-                    </div>
-                </div>
-                <!-- /container -->
-            </div>
-            <!-- /container -->
-            {% endif %}    
-        </div>
-    </header>
-     <!-- /condition carousel -->       
-    <div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
-    <hr>
+        <!-- NavBar Stop-->
+        </header>
+        <!-- Header Stop-->
+        <!-- Body Start-->
+        <body>
+       
+    <!-- definition du block content -->
     {% block content %}
 
     {% endblock %}
     <!-- /.container -->
     </div>
-    
+    </body>
+    <!-- Body Stop-->
     <!-- FOOTER -->
     <footer class="footer-custom">
-            <p>Copyright &copy; AUTOBOOST 2022<br>
-            <small>La pièce performance dans la caraïbe. <br>
-            <a href="#">Privacy</a> &middot; <a href="#">Terms</a></small>
-            </p>
-    </footer>
+            <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-23">
+                    <h4 class="text-light mb-4">Adresse</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>ZA Bois Carré 97232 Le Lamentin Martinique</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>05 96 79 61 97</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>atb@wipexcorp.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Horaire D'Ouverture</h4>
+                    <h6 class="text-light">Lundi - Samedi:</h6>
+                    <p class="mb-2">09.00 - 19.00</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Services</h4>
+                    <a class="btn btn-link" href="">Test Diagnostique</a>
+                    <a class="btn btn-link" href="">Atelier Moteur</a>
+                    <a class="btn btn-link" href="">Reprogrammation Moteur</a>
+                    <a class="btn btn-link" href="">Le Coin Moto</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-2">Newsletter</h4>
+                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Votre adresse mail">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                        <div class="text-center text-md-center mb-3 mb-md-0">
+                        Copyright &copy; <a class="border-bottom" href="{{ path('app_products') }}">AutoBoost 2022</a> <small>La pièce performance dans la caraïbe, All Right Reserved.</small>
+                        <br>
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">Computex-Services</a>
+                        <br>
+                        <small><a href="#">Privacy</a> &middot; <a href="#">Terms</a></small>
+                        <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</main>
-<script src="{{asset('assets/js/scripts.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <!-- Product actions-->
-                                                                                                                                    </body>
+    </div>
+    </footer>
+</main>                                                                                                                              
 </html>
 
